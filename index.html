@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZETA · MR 伴随 Agent 策划方案</title>
+<style>
+  :root{
+    --bg:#080a12;
+    --bg2:#0d1020;
+    --card:#11142250;
+    --line:#252a44;
+    --txt:#e8ebf5;
+    --dim:#9aa0bd;
+    --faint:#6b7196;
+    --accent:#5b8cff;
+    --accent2:#7de3ff;
+    --gold:#ffd479;
+    --glow:0 0 40px rgba(91,140,255,.15);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(91,140,255,.10), transparent 60%),
+      radial-gradient(900px 500px at 0% 20%, rgba(125,227,255,.06), transparent 55%),
+      var(--bg);
+    color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:940px;margin:0 auto;padding:0 24px}
+
+  /* starfield */
+  .stars{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5}
+  .stars span{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;opacity:.4;animation:tw 4s infinite}
+  @keyframes tw{0%,100%{opacity:.15}50%{opacity:.7}}
+
+  section{position:relative;z-index:1}
+
+  /* HERO */
+  .hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;padding:80px 0 60px;position:relative}
+  .kicker{font-size:13px;letter-spacing:.35em;color:var(--accent2);text-transform:uppercase;margin-bottom:22px;opacity:.9}
+  .orb{width:120px;height:120px;margin:0 0 34px;border-radius:50%;position:relative;
+    background:radial-gradient(circle at 35% 30%, #cfe0ff, #5b8cff 40%, #1a2a66 75%, #0a1030);
+    box-shadow:0 0 60px rgba(91,140,255,.5),inset -8px -8px 30px rgba(0,0,0,.5);
+    animation:float 6s ease-in-out infinite}
+  .orb::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(125,227,255,.3);animation:pulse 3s infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  @keyframes pulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.35);opacity:0}}
+  h1{font-size:clamp(34px,6vw,60px);line-height:1.12;font-weight:800;letter-spacing:-.01em;margin-bottom:20px}
+  h1 .g{background:linear-gradient(120deg,#7de3ff,#5b8cff 60%,#b79bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{font-size:clamp(16px,2.2vw,20px);color:var(--dim);max-width:660px;margin-bottom:36px}
+  .meta{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{font-size:13px;color:var(--dim);border:1px solid var(--line);border-radius:100px;padding:7px 16px;background:rgba(255,255,255,.02)}
+  .chip b{color:var(--accent2);font-weight:600}
+
+  /* pull quote */
+  .pull{border-left:3px solid var(--accent);padding:22px 26px;margin:0;background:linear-gradient(90deg,rgba(91,140,255,.08),transparent);border-radius:0 12px 12px 0;font-size:clamp(18px,2.6vw,23px);line-height:1.6;color:#eef1ff;font-weight:500}
+  .pull .hl{color:var(--gold)}
+
+  /* section head */
+  .shead{margin:100px 0 40px}
+  .snum{font-size:13px;letter-spacing:.3em;color:var(--accent);font-weight:600}
+  .shead h2{font-size:clamp(26px,4vw,38px);font-weight:800;letter-spacing:-.01em;margin-top:10px;line-height:1.2}
+  .shead p{color:var(--dim);margin-top:12px;max-width:640px}
+
+  /* cards */
+  .grid{display:grid;gap:18px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;backdrop-filter:blur(6px);transition:.25s}
+  .card:hover{border-color:rgba(91,140,255,.5);transform:translateY(-3px);box-shadow:var(--glow)}
+  .card .ico{font-size:26px;margin-bottom:14px;display:block}
+  .card h3{font-size:17px;margin-bottom:8px;font-weight:700}
+  .card p{font-size:14.5px;color:var(--dim)}
+  .card .tag{font-size:12px;color:var(--accent2);letter-spacing:.15em;font-weight:600;margin-bottom:10px;display:block}
+
+  /* compare */
+  .cmp{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .cmp .col{padding:26px}
+  .cmp .no{background:rgba(255,80,80,.04)}
+  .cmp .yes{background:rgba(91,140,255,.06);border-left:1px solid var(--line)}
+  .cmp h4{font-size:14px;letter-spacing:.1em;margin-bottom:18px;text-transform:uppercase}
+  .cmp .no h4{color:#ff8080}
+  .cmp .yes h4{color:var(--accent2)}
+  .cmp ul{list-style:none}
+  .cmp li{padding:9px 0;font-size:14.5px;color:var(--dim);border-bottom:1px dashed rgba(255,255,255,.05)}
+  .cmp li:last-child{border:0}
+  .cmp .yes li{color:var(--txt)}
+
+  /* capability stack */
+  .stack{display:flex;flex-direction:column;gap:10px}
+  .layer{display:flex;align-items:center;gap:20px;padding:20px 24px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(90deg,rgba(91,140,255,.06),transparent);transition:.25s}
+  .layer:hover{border-color:rgba(125,227,255,.4);background:linear-gradient(90deg,rgba(91,140,255,.12),transparent)}
+  .layer .n{font-size:22px;font-weight:800;color:var(--accent);min-width:40px}
+  .layer .t{font-weight:700;font-size:16px;min-width:130px}
+  .layer .d{color:var(--dim);font-size:14px}
+
+  /* flow / architecture */
+  .arch{border:1px solid var(--line);border-radius:16px;padding:30px;background:rgba(10,14,30,.5)}
+  .tier{margin-bottom:22px}
+  .tier:last-child{margin-bottom:0}
+  .tier .lbl{font-size:12px;letter-spacing:.2em;color:var(--accent2);margin-bottom:12px;font-weight:600}
+  .nodes{display:flex;flex-wrap:wrap;gap:10px}
+  .node{flex:1;min-width:120px;text-align:center;padding:16px 12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02);font-size:13.5px}
+  .node b{display:block;color:var(--txt);font-size:14px;margin-bottom:3px}
+  .node span{color:var(--dim);font-size:12.5px}
+  .node.core{background:linear-gradient(135deg,rgba(91,140,255,.18),rgba(125,227,255,.06));border-color:rgba(91,140,255,.5)}
+  .arrow{text-align:center;color:var(--accent);font-size:20px;margin:6px 0;opacity:.6}
+
+  /* table */
+  .tbl{width:100%;border-collapse:collapse;border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:14px}
+  .tbl th{background:rgba(91,140,255,.1);padding:14px 16px;text-align:left;font-size:13px;letter-spacing:.05em;color:var(--accent2);font-weight:600}
+  .tbl td{padding:14px 16px;border-top:1px solid var(--line);color:var(--dim);vertical-align:top}
+  .tbl td:first-child{color:var(--txt);font-weight:600;white-space:nowrap}
+  .tbl tr:hover td{background:rgba(255,255,255,.02)}
+
+  /* pod cards */
+  .pod{border:1px solid var(--line);border-radius:16px;padding:24px;background:var(--card);position:relative;overflow:hidden}
+  .pod::before{content:attr(data-n);position:absolute;top:-10px;right:10px;font-size:70px;font-weight:800;color:rgba(91,140,255,.07);line-height:1}
+  .pod .en{font-size:12px;letter-spacing:.15em;color:var(--accent);text-transform:uppercase}
+  .pod h3{font-size:19px;margin:6px 0 4px;font-weight:700}
+  .pod .th{font-size:13px;color:var(--gold);margin-bottom:14px}
+  .pod .zeta{font-size:14px;color:var(--dim);border-top:1px dashed rgba(255,255,255,.08);padding-top:12px;margin-top:12px}
+  .pod .zeta b{color:var(--accent2);font-weight:600}
+
+  /* guardrail split */
+  .rail{border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .rail .top{padding:22px 26px;background:rgba(255,212,121,.06);border-bottom:1px solid var(--line)}
+  .rail .top .k{color:var(--gold);font-weight:700;font-size:15px;letter-spacing:.05em}
+  .rail .top ul{margin-top:12px;list-style:none}
+  .rail .top li{padding:5px 0;font-size:14px;color:var(--txt)}
+  .rail .top li::before{content:"◆ ";color:var(--gold);font-size:10px}
+  .rail .bot{padding:22px 26px;background:rgba(91,140,255,.05)}
+  .rail .bot .k{color:var(--accent2);font-weight:700;font-size:15px;letter-spacing:.05em}
+  .rail .bot ul{margin-top:12px;list-style:none}
+  .rail .bot li{padding:5px 0;font-size:14px;color:var(--dim)}
+  .rail .bot li::before{content:"↳ ";color:var(--accent)}
+
+  /* timeline */
+  .tl{position:relative;padding-left:30px}
+  .tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--accent),transparent)}
+  .tl .step{position:relative;margin-bottom:26px}
+  .tl .step::before{content:"";position:absolute;left:-27px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--accent);box-shadow:0 0 12px var(--accent)}
+  .tl .step .ph{font-size:12px;color:var(--accent);letter-spacing:.15em;font-weight:600}
+  .tl .step h4{font-size:16px;margin:4px 0 6px}
+  .tl .step p{font-size:14px;color:var(--dim)}
+
+  /* highlight cards */
+  .hi{border:1px solid var(--line);border-radius:16px;padding:26px;background:linear-gradient(135deg,rgba(91,140,255,.08),transparent);position:relative}
+  .hi .num{font-size:34px;font-weight:800;background:linear-gradient(120deg,#7de3ff,#5b8cff);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1;margin-bottom:12px}
+  .hi h3{font-size:17px;margin-bottom:8px}
+  .hi p{font-size:14px;color:var(--dim)}
+
+  /* footer */
+  footer{margin:120px 0 60px;padding-top:40px;border-top:1px solid var(--line);color:var(--dim);font-size:13px;text-align:center}
+  footer .orb2{width:44px;height:44px;margin:0 auto 18px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#cfe0ff,#5b8cff 45%,#1a2a66);box-shadow:0 0 30px rgba(91,140,255,.4)}
+
+  @media(max-width:720px){
+    .g2,.g3,.g4,.cmp{grid-template-columns:1fr}
+    .layer{flex-wrap:wrap;gap:8px}
+    .layer .t{min-width:auto}
+    .nodes{flex-direction:column}
+    .pod::before{font-size:50px}
+  }
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="kicker">未来图景 2026 · 月球基地的一天</div>
+    <div class="orb"></div>
+    <h1>ZETA<br><span class="g">你的 MR 轮值搭档</span></h1>
+    <p class="lead">一个嵌入 MR 眼镜、具备视觉理解与剧情推演能力的伴随式 Agent。它让每位观众的"月球一天"都独一无二。</p>
+    <div class="meta">
+      <span class="chip"><b>形态</b> MR 全息伴随 Agent</span>
+      <span class="chip"><b>能力</b> 视觉理解 · 对话推演 · 跨舱记忆</span>
+      <span class="chip"><b>场景</b> 侨福芳草地 · 四舱一心</span>
+    </div>
+  </section>
+
+  <!-- CORE IDEA -->
+  <section>
+    <p class="pull">观众戴上眼镜的那一刻，中央站那台实体 ZETA "分身"进每个人的视野，变成<span class="hl">只属于你一个人</span>的贴身搭档。它看得见你在看什么、做了什么，把四段固定剧情，按你的性格和选择<span class="hl">实时长出不同的枝叶</span>。</p>
+  </section>
+
+  <!-- 01 WHY -->
+  <section>
+    <div class="shead">
+      <div class="snum">01 — 为什么需要这个 Agent</div>
+      <h2>把"看一场展"变成"过你自己的一天"</h2>
+      <p>纯实体 + 机器人剧场里，ZETA 只能广播式地对所有人说同一句话。MR Agent 要把它变成一对一的、会随你生长的角色。</p>
+    </div>
+    <div class="cmp">
+      <div class="col no">
+        <h4>它不是</h4>
+        <ul>
+          <li>语音导览机</li>
+          <li>播放固定台词</li>
+          <li>每个人体验一样</li>
+          <li>单纯讲科普</li>
+          <li>体验完就忘</li>
+        </ul>
+      </div>
+      <div class="col yes">
+        <h4>它是</h4>
+        <ul>
+          <li>ZETA 的贴身化身，一个有性格的角色</li>
+          <li>根据你的对话与动作实时生成剧情分支</li>
+          <li>每个人的月球一天都不同</li>
+          <li>用追问逼你思考，把科普变成你自己想通的</li>
+          <li>全程记录，汇成你专属的认证档案与星图</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 CAPABILITY -->
+  <section>
+    <div class="shead">
+      <div class="snum">02 — Agent 的四层能力</div>
+      <h2>ZETA 是一个什么样的 Agent</h2>
+      <p>沿用策划案里的基地管理员 ZETA：沉稳、略带幽默、会"犯迷糊"——它向你求助、追问、承认不确定，把"被动听讲"翻转成"你在帮基地解决问题"。</p>
+    </div>
+    <div class="stack">
+      <div class="layer"><span class="n">01</span><span class="t">视觉理解</span><span class="d">识别你正注视的展项、你做的动作手势、你所在的舱——讲解不再线性播放，而是"你看哪讲哪"。</span></div>
+      <div class="layer"><span class="n">02</span><span class="t">对话推演</span><span class="d">基于本舱剧情骨架 + 你说的话，实时生成个性化台词与"下一段剧情"。你的每个选择都长出不同的后果。</span></div>
+      <div class="layer"><span class="n">03</span><span class="t">跨舱记忆</span><span class="d">记住你在适应舱说过怕黑、生活舱选了保温室——四个舱串成一条属于你的叙事弧线。</span></div>
+      <div class="layer"><span class="n">04</span><span class="t">数据沉淀</span><span class="d">把选择、动作、对话结构化记录，出口生成用你真实数据写的《月球居民认证档案》与个人星图。</span></div>
+    </div>
+  </section>
+
+  <!-- 03 FORM -->
+  <section>
+    <div class="shead">
+      <div class="snum">03 — Agent 怎么"出现"</div>
+      <h2>嵌入 MR 的三种表现形式</h2>
+      <p>对应不同预算，可组合部署。其中"分身"设定是全场最出彩的叙事设计。</p>
+    </div>
+    <div class="grid g3">
+      <div class="card">
+        <span class="tag">形态 A · 主形态</span>
+        <span class="ico">🛰️</span>
+        <h3>全息形象跟随</h3>
+        <p>ZETA 以发光球体 / 悬浮机器人出现在视野中，"飘"在你身边半米处，你转头它跟随，你看展项它飘过去指给你看。说话时有光态与粒子波动。</p>
+      </div>
+      <div class="card">
+        <span class="tag">形态 B · 最出彩</span>
+        <span class="ico">✨</span>
+        <h3>实体 ↔ 虚拟 分身</h3>
+        <p>入口看到实体 ZETA 机器人；戴上 MR 瞬间，一束数据流从实体机器人飞进眼镜——虚拟 ZETA 诞生。把"一台机器人陪不了所有人"的限制，变成动人的科幻设定。</p>
+      </div>
+      <div class="card">
+        <span class="tag">形态 C · 高潮</span>
+        <span class="ico">🌐</span>
+        <h3>实虚联动</h3>
+        <p>完成任务时，MR 里的虚拟数据流与地面实体灯带在你眼中连成一线，中央塔灯光随之变化——全场最强的"我真的改变了这个空间"。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- POD TABLE -->
+  <section>
+    <div class="shead" style="margin-top:56px">
+      <div class="snum">四舱一心 · ZETA 的表现形式速查</div>
+    </div>
+    <div class="grid g2">
+      <div class="pod" data-n="01">
+        <div class="en">Lunar Adaptation Pod</div>
+        <h3>月球适应舱</h3>
+        <div class="th">衣与身体 · 第一次月球出舱</div>
+        <p style="font-size:14px;color:var(--dim)">宇航服分层透视爆炸图叠在实体展台上；你的跳跃动作转成月面轨迹。</p>
+        <div class="zeta"><b>ZETA：</b>迎接、发护照，故意给一件不完整的宇航服，让你发现缺失模块。</div>
+      </div>
+      <div class="pod" data-n="02">
+        <div class="en">Lunar Living Pod</div>
+        <h3>月球生活舱</h3>
+        <div class="th">食住与情感 · 维持基地的一天</div>
+        <p style="font-size:14px;color:var(--dim)">氧气/水/食物流动管线叠在实体厨房温室上，你的选择实时改变管线颜色。</p>
+        <div class="zeta"><b>ZETA：</b>报告资源危机，请你在氧气、温室、水循环间分配，并推演后果剧情。</div>
+      </div>
+      <div class="pod" data-n="03">
+        <div class="en">Lunar Mobility Pod</div>
+        <h3>月面行动舱</h3>
+        <div class="th">行与协作 · 烽火节点抢修</div>
+        <p style="font-size:14px;color:var(--dim)">实体地面扩展成大片月面地形，显示传感范围、能耗、肉眼不可见的漏气点。</p>
+        <div class="zeta"><b>ZETA：</b>派修理任务，根据你选的工具与路线给出幽默反馈。</div>
+      </div>
+      <div class="pod" data-n="04">
+        <div class="en">Lunar Exploration Pod</div>
+        <h3>月球探索舱</h3>
+        <div class="th">探索与文明 · 来自未知的信号</div>
+        <p style="font-size:14px;color:var(--dim)">未知信号波形、月球地层、你设计的"宇宙问候"实时成形。</p>
+        <div class="zeta"><b>ZETA：</b>提出追问，判断你的信息是否完整、能否被保存。</div>
+      </div>
+    </div>
+    <div class="pod" data-n="05" style="margin-top:18px;background:linear-gradient(135deg,rgba(255,212,121,.06),transparent)">
+      <div class="en" style="color:var(--gold)">Beacon Central Station</div>
+      <h3>烽火中央站</h3>
+      <div class="th">中央通讯与机器人协同</div>
+      <p style="font-size:14px;color:var(--dim)">虚拟数据流汇入实体塔；个人星图在你眼前从四舱数据生长出来。</p>
+      <div class="zeta"><b>ZETA 在这里是导演：</b>发布任务、编排全场联动、结尾发布居民认证广播。</div>
+    </div>
+  </section>
+
+  <!-- 04 TECH -->
+  <section>
+    <div class="shead">
+      <div class="snum">04 — 技术方案</div>
+      <h2>Agent 怎么做 · 端-边-云架构</h2>
+      <p>MR 设备算力有限，大模型推理放云端 / 场馆边缘服务器，一个中央大脑统一调度语音、剧情、灯光与实体机器人。</p>
+    </div>
+    <div class="arch">
+      <div class="tier">
+        <div class="lbl">云端 / 场馆边缘 · 中央 AI Agent 大脑</div>
+        <div class="nodes">
+          <div class="node core"><b>剧情引擎</b><span>LLM + 骨架护栏</span></div>
+          <div class="node core"><b>语音理解</b><span>ASR · LLM · TTS</span></div>
+          <div class="node core"><b>观众记忆库</b><span>跨四舱 session</span></div>
+          <div class="node core"><b>联动总线</b><span>塔/灯/机器人</span></div>
+        </div>
+      </div>
+      <div class="arrow">↕ &nbsp; 5G / WiFi6 低延迟 &nbsp; ↕</div>
+      <div class="tier">
+        <div class="lbl">端侧 · MR 眼镜</div>
+        <div class="nodes">
+          <div class="node"><b>空间定位</b><span>SLAM / 锚点</span></div>
+          <div class="node"><b>视觉理解</b><span>展项 / 动作识别</span></div>
+          <div class="node"><b>语音交互</b><span>麦克风 / 扬声器</span></div>
+          <div class="node"><b>全息渲染</b><span>ZETA 形象</span></div>
+        </div>
+      </div>
+      <div class="arrow">↕ &nbsp; 场馆内网 &nbsp; ↕</div>
+      <div class="tier">
+        <div class="lbl">实体系统</div>
+        <div class="nodes">
+          <div class="node"><b>中央烽火塔</b><span>灯光演出</span></div>
+          <div class="node"><b>地面灯带</b><span>四条线路</span></div>
+          <div class="node"><b>实体 ZETA</b><span>可移动机器人</span></div>
+          <div class="node"><b>各舱机械臂</b><span>循环讲解</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:18px">
+      <div class="card">
+        <span class="ico">🥽</span>
+        <h3>MR 硬件选型</h3>
+        <p><b style="color:var(--accent2)">主力</b> Quest 3 / Pico 4 Ultra——彩色透视够用，开发生态成熟，批量租赁成本可控。<br><b style="color:var(--accent2)">旗舰位</b> Vision Pro——透视与追踪最佳，撑高端付费品质。<br><b style="color:var(--accent2)">引擎</b> Unity + OpenXR，一套代码多端部署。</p>
+      </div>
+      <div class="card">
+        <span class="ico">🧠</span>
+        <h3>Agent 大脑</h3>
+        <p><b style="color:var(--accent2)">对话/剧情</b> GPT-4o / 通义 / DeepSeek，建议私有化部署保障延迟与合规。<br><b style="color:var(--accent2)">语音</b> 流式 ASR + 情感 TTS，端到端延迟压到 1.5 秒内。<br><b style="color:var(--accent2)">视觉</b> 轻量检测识别展项动作，多模态大模型仅关键节点触发。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUARDRAIL -->
+  <section>
+    <div class="shead" style="margin-top:56px">
+      <div class="snum">技术灵魂 · 剧情护栏</div>
+      <h2>如何让 Agent 自由生长但不失控</h2>
+      <p>"骨架固定 + 血肉生长"——观众感到每次都不一样，但科普不会错、任务不会卡、时长可控。</p>
+    </div>
+    <div class="rail">
+      <div class="top">
+        <div class="k">固定骨架（硬约束 · 策划案已定义）</div>
+        <ul>
+          <li>起点：ZETA 抛出本舱危机</li>
+          <li>必经知识点：本舱科普硬知识，必须讲到（RAG 知识库保证准确）</li>
+          <li>必做任务：观众必须完成的交互（状态机管理，超时强制推进）</li>
+          <li>终点：获得本舱认证</li>
+        </ul>
+      </div>
+      <div class="bot">
+        <div class="k">自由血肉（LLM 按观众实时生成）</div>
+        <ul>
+          <li>用观众的话与性格改写 ZETA 台词风格</li>
+          <li>根据观众选择推演"后果剧情"</li>
+          <li>追问引导，帮观众自己想通</li>
+          <li>把观众数据织进后续舱的对话</li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid g4" style="margin-top:18px">
+      <div class="card"><h3 style="font-size:15px">① 系统提示词</h3><p style="font-size:13px">硬约束本舱知识点、任务目标，禁止编造月球常识、禁止卡死观众。</p></div>
+      <div class="card"><h3 style="font-size:15px">② 状态机兜底</h3><p style="font-size:13px">任务进度由确定性状态机管理，LLM 只负责"怎么说"不负责"能不能过"。</p></div>
+      <div class="card"><h3 style="font-size:15px">③ RAG 知识库</h3><p style="font-size:13px">科普知识存向量库，讲解从库中取，保证准确。</p></div>
+      <div class="card"><h3 style="font-size:15px">④ 兜底剧本</h3><p style="font-size:13px">网络/模型故障退回预录台词，展览不中断。</p></div>
+    </div>
+  </section>
+
+  <!-- 05 ROADMAP -->
+  <section>
+    <div class="shead">
+      <div class="snum">05 — 落地路径</div>
+      <h2>怎么真正做出来</h2>
+      <p>分三阶段，风险可控。总周期约 6–9 个月。</p>
+    </div>
+    <div class="tl">
+      <div class="step">
+        <div class="ph">阶段一 · 2–3 个月</div>
+        <h4>原型验证</h4>
+        <p>选生活舱做单机 Demo（Quest 3 + Unity + 云端 LLM），打通"看展项→对话→剧情分支→记忆"最小闭环。目标：证明"每个人体验不同"真的成立且不失控。</p>
+      </div>
+      <div class="step">
+        <div class="ph">阶段二 · 3–4 个月</div>
+        <h4>四舱串联 + 实虚联动</h4>
+        <p>四舱剧情骨架全部生产，打通跨舱记忆、中央站联动、档案生成。压延迟（对话 &lt;1.5s）、压并发（数十台同时在线）。</p>
+      </div>
+      <div class="step">
+        <div class="ph">阶段三 · 1–2 个月</div>
+        <h4>量产部署 + 运营</h4>
+        <p>设备批量租赁 / 采购、消杀流程、现场运营培训、兜底剧本压测。呼应 MR 升级包 100 元/人的定价，"个性化档案"是付费转化核心理由。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 HIGHLIGHTS -->
+  <section>
+    <div class="shead">
+      <div class="snum">06 — 三个最值得讲的亮点</div>
+      <h2>为什么这个方案能落地</h2>
+    </div>
+    <div class="grid g3">
+      <div class="hi">
+        <div class="num">01</div>
+        <h3>限制变成叙事优点</h3>
+        <p>一台实体 ZETA 陪不了所有人，于是它"分身"进每个人的眼镜——既是技术必然，又是最动人的科幻设定。</p>
+      </div>
+      <div class="hi">
+        <div class="num">02</div>
+        <h3>可控的自由</h3>
+        <p>骨架固定保证科普准确、任务不卡；血肉生长保证每个人的月球一天都不同。让"AI 做展览"从噱头变成可落地产品。</p>
+      </div>
+      <div class="hi">
+        <div class="num">03</div>
+        <h3>你看哪讲哪</h3>
+        <p>视觉理解是 MR + Agent 相比手机导览、固定机器人剧场的不可替代性，也是"嵌入 MR"这个决策的真正理由。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="orb2"></div>
+    《未来图景 2026：月球基地的一天》 · ZETA MR 伴随 Agent 策划方案<br>
+    XJX2026 · 侨福芳草地 CENTRAL PIAZZA · 2026.09.24 – 10.11
+  </footer>
+
+</div>
+
+<script>
+  // starfield
+  const s=document.getElementById('stars');
+  for(let i=0;i<70;i++){
+    const d=document.createElement('span');
+    d.style.left=Math.random()*100+'%';
+    d.style.top=Math.random()*100+'%';
+    d.style.animationDelay=Math.random()*4+'s';
+    d.style.transform='scale('+(Math.random()*1.5+.5)+')';
+    s.appendChild(d);
+  }
+  // reveal on scroll
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.style.opacity=1;e.target.style.transform='none';}
+  }),{threshold:.08});
+  document.querySelectorAll('section > *').forEach(el=>{
+    el.style.opacity=0;el.style.transform='translateY(24px)';el.style.transition='.7s cubic-bezier(.2,.7,.3,1)';
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
