@@ -156,6 +156,14 @@
   .hi h3{font-size:17px;margin-bottom:8px}
   .hi p{font-size:14px;color:var(--dim)}
 
+  /* boundary */
+  .boundary{border:1px solid var(--line);border-radius:16px;padding:26px;background:rgba(10,14,30,.5)}
+  .bt{font-size:13px;letter-spacing:.18em;color:var(--gold);font-weight:700;margin-bottom:18px}
+  .brow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+  .bcol b{display:block;color:var(--accent2);font-size:15px;margin-bottom:6px}
+  .bcol{font-size:14px;color:var(--dim)}
+  @media(max-width:720px){.brow{grid-template-columns:1fr}}
+
   /* footer */
   footer{margin:120px 0 60px;padding-top:40px;border-top:1px solid var(--line);color:var(--dim);font-size:13px;text-align:center}
   footer .orb2{width:44px;height:44px;margin:0 auto 18px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#cfe0ff,#5b8cff 45%,#1a2a66);box-shadow:0 0 30px rgba(91,140,255,.4)}
@@ -179,45 +187,45 @@
     <div class="kicker">未来图景 2026 · 月球基地的一天</div>
     <div class="orb"></div>
     <h1>ZETA<br><span class="g">你的 MR 轮值搭档</span></h1>
-    <p class="lead">一个嵌入 MR 眼镜、具备视觉理解与剧情推演能力的伴随式 Agent。它让每位观众的"月球一天"都独一无二。</p>
+    <p class="lead">一个嵌入 MR 眼镜、以语言陪伴观众的对话式 Agent。它不控制机器人和画面——那些都提前预制好；它只用说话，把预制好的故事往后推、追问、补科普，让每位观众多聊出一点属于自己的体验。</p>
     <div class="meta">
-      <span class="chip"><b>形态</b> MR 全息伴随 Agent</span>
-      <span class="chip"><b>能力</b> 视觉理解 · 对话推演 · 跨舱记忆</span>
+      <span class="chip"><b>形态</b> MR 语音 / 文字对话 Agent</span>
+      <span class="chip"><b>能力</b> 故事延展 · 追问引导 · 科普问答</span>
       <span class="chip"><b>场景</b> 侨福芳草地 · 四舱一心</span>
     </div>
   </section>
 
   <!-- CORE IDEA -->
   <section>
-    <p class="pull">观众戴上眼镜的那一刻，中央站那台实体 ZETA "分身"进每个人的视野，变成<span class="hl">只属于你一个人</span>的贴身搭档。它看得见你在看什么、做了什么，把四段固定剧情，按你的性格和选择<span class="hl">实时长出不同的枝叶</span>。</p>
+    <p class="pull">MR 里的机器人剧情、动作、灯光，是一部<span class="hl">提前拍好的片子</span>，到点就播。ZETA 不当导演，它是坐在你旁边、<span class="hl">会随你聊天延展讲解的那个"嘴"</span>——同一段故事，它能顺着你的话往后多讲一段、追问你、把科普讲深，让每个人聊出来的都不太一样。</p>
   </section>
 
   <!-- 01 WHY -->
   <section>
     <div class="shead">
       <div class="snum">01 — 为什么需要这个 Agent</div>
-      <h2>把"看一场展"变成"过你自己的一天"</h2>
-      <p>纯实体 + 机器人剧场里，ZETA 只能广播式地对所有人说同一句话。MR Agent 要把它变成一对一的、会随你生长的角色。</p>
+      <h2>把"看一场展"变成"有人陪你走完这一天"</h2>
+      <p>MR 剧情和机器人动作都是预制好的，对所有人一样。ZETA 加进来，是在这些固定环节的间隙里陪你说话——顺着你的反应把故事往后推、追问、补科普，让固定的展多一层随你生长的对话。</p>
     </div>
     <div class="cmp">
       <div class="col no">
         <h4>它不是</h4>
         <ul>
-          <li>语音导览机</li>
-          <li>播放固定台词</li>
-          <li>每个人体验一样</li>
-          <li>单纯讲科普</li>
-          <li>体验完就忘</li>
+          <li>控制机器人和画面的"导演"</li>
+          <li>会因为你说话而改变机器人动作</li>
+          <li>只会播放一句固定台词的导览机</li>
+          <li>单纯照本宣科讲科普</li>
+          <li>聊完就断、不接上一段</li>
         </ul>
       </div>
       <div class="col yes">
         <h4>它是</h4>
         <ul>
-          <li>ZETA 的贴身化身，一个有性格的角色</li>
-          <li>根据你的对话与动作实时生成剧情分支</li>
-          <li>每个人的月球一天都不同</li>
-          <li>用追问逼你思考，把科普变成你自己想通的</li>
-          <li>全程记录，汇成你专属的认证档案与星图</li>
+          <li>预制剧情之间陪你说话的对话搭档</li>
+          <li>顺着你的话把同一段故事往后多讲一段</li>
+          <li>会追问、逼你想一想，再给答案</li>
+          <li>你想深挖时，随时追问得到更多科普</li>
+          <li>记得你前面聊过什么，后面接得上</li>
         </ul>
       </div>
     </div>
@@ -228,13 +236,13 @@
     <div class="shead">
       <div class="snum">02 — Agent 的四层能力</div>
       <h2>ZETA 是一个什么样的 Agent</h2>
-      <p>沿用策划案里的基地管理员 ZETA：沉稳、略带幽默、会"犯迷糊"——它向你求助、追问、承认不确定，把"被动听讲"翻转成"你在帮基地解决问题"。</p>
+      <p>沿用策划案里的基地管理员 ZETA：沉稳、略带幽默、会"犯迷糊"——它向你求助、追问、承认不确定，把"被动听讲"翻转成"你在帮基地解决问题"。它只用语言工作，不碰机器人和画面。</p>
     </div>
     <div class="stack">
-      <div class="layer"><span class="n">01</span><span class="t">视觉理解</span><span class="d">识别你正注视的展项、你做的动作手势、你所在的舱——讲解不再线性播放，而是"你看哪讲哪"。</span></div>
-      <div class="layer"><span class="n">02</span><span class="t">对话推演</span><span class="d">基于本舱剧情骨架 + 你说的话，实时生成个性化台词与"下一段剧情"。你的每个选择都长出不同的后果。</span></div>
-      <div class="layer"><span class="n">03</span><span class="t">跨舱记忆</span><span class="d">记住你在适应舱说过怕黑、生活舱选了保温室——四个舱串成一条属于你的叙事弧线。</span></div>
-      <div class="layer"><span class="n">04</span><span class="t">数据沉淀</span><span class="d">把选择、动作、对话结构化记录，出口生成用你真实数据写的《月球居民认证档案》与个人星图。</span></div>
+      <div class="layer"><span class="n">01</span><span class="t">进度感知</span><span class="d">知道你在哪个舱、预制剧情播到了哪一步——好在正确的时机开口，把话接到当前这段故事上。它不识别、也不驱动任何动作。</span></div>
+      <div class="layer"><span class="n">02</span><span class="t">故事延展</span><span class="d">在预制剧情的间隙或结尾，顺着你说的话，把这段故事往后多讲一段、抛出下一个问题，让固定剧情多一层随你生长的对话。</span></div>
+      <div class="layer"><span class="n">03</span><span class="t">追问科普</span><span class="d">你想深挖时随时追问，ZETA 从知识库里取准确内容答你；也会反过来追问你，帮你自己想通，把科普变成对话而非念稿。</span></div>
+      <div class="layer"><span class="n">04</span><span class="t">跨舱记忆</span><span class="d">记住你在前面舱聊过、选过什么，后面的对话接得上——四个舱的闲聊串成一条属于你的话头。</span></div>
     </div>
   </section>
 
@@ -242,27 +250,21 @@
   <section>
     <div class="shead">
       <div class="snum">03 — Agent 怎么"出现"</div>
-      <h2>嵌入 MR 的三种表现形式</h2>
-      <p>对应不同预算，可组合部署。其中"分身"设定是全场最出彩的叙事设计。</p>
+      <h2>Agent 在 MR 里长什么样</h2>
+      <p>这里说的只是 ZETA 的<b style="color:var(--accent2)">视觉外观</b>——它以什么形象陪着你说话。形象也是预制的动画，不代表它在控制现场设备。</p>
     </div>
-    <div class="grid g3">
+    <div class="grid g2">
       <div class="card">
         <span class="tag">形态 A · 主形态</span>
         <span class="ico">🛰️</span>
         <h3>全息形象跟随</h3>
-        <p>ZETA 以发光球体 / 悬浮机器人出现在视野中，"飘"在你身边半米处，你转头它跟随，你看展项它飘过去指给你看。说话时有光态与粒子波动。</p>
+        <p>ZETA 以发光球体 / 悬浮机器人的形象出现在视野中，"飘"在你身边半米处，你转头它跟随。说话时有光态与粒子波动——一个会陪你聊天的形象，而不只是一个声音。</p>
       </div>
       <div class="card">
         <span class="tag">形态 B · 最出彩</span>
         <span class="ico">✨</span>
         <h3>实体 ↔ 虚拟 分身</h3>
-        <p>入口看到实体 ZETA 机器人；戴上 MR 瞬间，一束数据流从实体机器人飞进眼镜——虚拟 ZETA 诞生。把"一台机器人陪不了所有人"的限制，变成动人的科幻设定。</p>
-      </div>
-      <div class="card">
-        <span class="tag">形态 C · 高潮</span>
-        <span class="ico">🌐</span>
-        <h3>实虚联动</h3>
-        <p>完成任务时，MR 里的虚拟数据流与地面实体灯带在你眼中连成一线，中央塔灯光随之变化——全场最强的"我真的改变了这个空间"。</p>
+        <p>入口看到实体 ZETA 机器人；戴上 MR 瞬间，一束数据流从实体机器人"飞"进眼镜——虚拟 ZETA 的形象诞生。这是一段预制的转场动画，把"一台机器人陪不了所有人"的限制，讲成一个动人的科幻设定。</p>
       </div>
     </div>
   </section>
@@ -270,44 +272,44 @@
   <!-- POD TABLE -->
   <section>
     <div class="shead" style="margin-top:56px">
-      <div class="snum">四舱一心 · ZETA 的表现形式速查</div>
+      <div class="snum">四舱一心 · ZETA 在每个舱说什么</div>
     </div>
     <div class="grid g2">
       <div class="pod" data-n="01">
         <div class="en">Lunar Adaptation Pod</div>
         <h3>月球适应舱</h3>
         <div class="th">衣与身体 · 第一次月球出舱</div>
-        <p style="font-size:14px;color:var(--dim)">宇航服分层透视爆炸图叠在实体展台上；你的跳跃动作转成月面轨迹。</p>
-        <div class="zeta"><b>ZETA：</b>迎接、发护照，故意给一件不完整的宇航服，让你发现缺失模块。</div>
+        <p style="font-size:14px;color:var(--dim)">预制：宇航服分层透视爆炸图叠在实体展台上，按时序播放。</p>
+        <div class="zeta"><b>ZETA 说：</b>迎接你、讲这套宇航服每层的门道，追问你觉得少了哪个模块，顺势补出舱防护的科普。</div>
       </div>
       <div class="pod" data-n="02">
         <div class="en">Lunar Living Pod</div>
         <h3>月球生活舱</h3>
         <div class="th">食住与情感 · 维持基地的一天</div>
-        <p style="font-size:14px;color:var(--dim)">氧气/水/食物流动管线叠在实体厨房温室上，你的选择实时改变管线颜色。</p>
-        <div class="zeta"><b>ZETA：</b>报告资源危机，请你在氧气、温室、水循环间分配，并推演后果剧情。</div>
+        <p style="font-size:14px;color:var(--dim)">预制：氧气/水/食物流动管线叠在实体厨房温室上，按剧本演示。</p>
+        <div class="zeta"><b>ZETA 说：</b>把这套资源循环讲给你听，追问"要是断了一环会怎样"，顺着你的回答把生命维持系统的科普讲深。</div>
       </div>
       <div class="pod" data-n="03">
         <div class="en">Lunar Mobility Pod</div>
         <h3>月面行动舱</h3>
         <div class="th">行与协作 · 烽火节点抢修</div>
-        <p style="font-size:14px;color:var(--dim)">实体地面扩展成大片月面地形，显示传感范围、能耗、肉眼不可见的漏气点。</p>
-        <div class="zeta"><b>ZETA：</b>派修理任务，根据你选的工具与路线给出幽默反馈。</div>
+        <p style="font-size:14px;color:var(--dim)">预制：实体地面扩展成大片月面地形，传感范围、能耗、漏气点按时序显示。</p>
+        <div class="zeta"><b>ZETA 说：</b>讲这段抢修故事，追问你会怎么选路线/工具，用幽默的口吻把月面行动的知识接着往下聊。</div>
       </div>
       <div class="pod" data-n="04">
         <div class="en">Lunar Exploration Pod</div>
         <h3>月球探索舱</h3>
         <div class="th">探索与文明 · 来自未知的信号</div>
-        <p style="font-size:14px;color:var(--dim)">未知信号波形、月球地层、你设计的"宇宙问候"实时成形。</p>
-        <div class="zeta"><b>ZETA：</b>提出追问，判断你的信息是否完整、能否被保存。</div>
+        <p style="font-size:14px;color:var(--dim)">预制：未知信号波形、月球地层、"宇宙问候"按剧本成形。</p>
+        <div class="zeta"><b>ZETA 说：</b>把这段信号故事讲下去，追问你会怎么向未知回话，借机聊深空探测与文明尺度的科普。</div>
       </div>
     </div>
     <div class="pod" data-n="05" style="margin-top:18px;background:linear-gradient(135deg,rgba(255,212,121,.06),transparent)">
       <div class="en" style="color:var(--gold)">Beacon Central Station</div>
       <h3>烽火中央站</h3>
-      <div class="th">中央通讯与机器人协同</div>
-      <p style="font-size:14px;color:var(--dim)">虚拟数据流汇入实体塔；个人星图在你眼前从四舱数据生长出来。</p>
-      <div class="zeta"><b>ZETA 在这里是导演：</b>发布任务、编排全场联动、结尾发布居民认证广播。</div>
+      <div class="th">中央通讯 · 一天的收尾</div>
+      <p style="font-size:14px;color:var(--dim)">预制：虚拟数据流汇入实体塔、结尾广播，都是按时序播放的固定演出。</p>
+      <div class="zeta"><b>ZETA 说：</b>在这里帮你把四个舱聊过的内容串起来做个收尾——它不指挥演出，只是陪你回顾这一天、说句结束语。</div>
     </div>
   </section>
 
@@ -316,36 +318,35 @@
     <div class="shead">
       <div class="snum">04 — 技术方案</div>
       <h2>Agent 怎么做 · 端-边-云架构</h2>
-      <p>MR 设备算力有限，大模型推理放云端 / 场馆边缘服务器，一个中央大脑统一调度语音、剧情、灯光与实体机器人。</p>
+      <p>MR 设备算力有限，大模型推理放云端 / 场馆边缘服务器。注意：Agent 只做<b style="color:var(--accent2)">听、想、说</b>三件事——它读取"现在播到哪"，输出语音/文字，<b style="color:var(--accent2)">不向机器人和灯光下发任何指令</b>。实体演出由现场时序系统独立跑。</p>
     </div>
     <div class="arch">
       <div class="tier">
-        <div class="lbl">云端 / 场馆边缘 · 中央 AI Agent 大脑</div>
+        <div class="lbl">云端 / 场馆边缘 · 对话 Agent 大脑</div>
         <div class="nodes">
-          <div class="node core"><b>剧情引擎</b><span>LLM + 骨架护栏</span></div>
+          <div class="node core"><b>对话引擎</b><span>LLM + 剧情护栏</span></div>
           <div class="node core"><b>语音理解</b><span>ASR · LLM · TTS</span></div>
           <div class="node core"><b>观众记忆库</b><span>跨四舱 session</span></div>
-          <div class="node core"><b>联动总线</b><span>塔/灯/机器人</span></div>
+          <div class="node core"><b>科普知识库</b><span>RAG 向量检索</span></div>
         </div>
       </div>
       <div class="arrow">↕ &nbsp; 5G / WiFi6 低延迟 &nbsp; ↕</div>
       <div class="tier">
         <div class="lbl">端侧 · MR 眼镜</div>
         <div class="nodes">
-          <div class="node"><b>空间定位</b><span>SLAM / 锚点</span></div>
-          <div class="node"><b>视觉理解</b><span>展项 / 动作识别</span></div>
           <div class="node"><b>语音交互</b><span>麦克风 / 扬声器</span></div>
           <div class="node"><b>全息渲染</b><span>ZETA 形象</span></div>
+          <div class="node"><b>进度读取</b><span>当前舱 / 时序节点</span></div>
         </div>
       </div>
-      <div class="arrow">↕ &nbsp; 场馆内网 &nbsp; ↕</div>
+      <div class="arrow">↑ &nbsp; 只读进度，不下发指令 &nbsp; ↑</div>
       <div class="tier">
-        <div class="lbl">实体系统</div>
+        <div class="lbl">实体系统 · 完全独立运行（Agent 不控制）</div>
         <div class="nodes">
-          <div class="node"><b>中央烽火塔</b><span>灯光演出</span></div>
-          <div class="node"><b>地面灯带</b><span>四条线路</span></div>
-          <div class="node"><b>实体 ZETA</b><span>可移动机器人</span></div>
-          <div class="node"><b>各舱机械臂</b><span>循环讲解</span></div>
+          <div class="node"><b>中央烽火塔</b><span>灯光·预制时序</span></div>
+          <div class="node"><b>地面灯带</b><span>预制时序</span></div>
+          <div class="node"><b>实体 ZETA</b><span>预制动作</span></div>
+          <div class="node"><b>各舱机械臂</b><span>循环预制</span></div>
         </div>
       </div>
     </div>
@@ -359,7 +360,7 @@
       <div class="card">
         <span class="ico">🧠</span>
         <h3>Agent 大脑</h3>
-        <p><b style="color:var(--accent2)">对话/剧情</b> GPT-4o / 通义 / DeepSeek，建议私有化部署保障延迟与合规。<br><b style="color:var(--accent2)">语音</b> 流式 ASR + 情感 TTS，端到端延迟压到 1.5 秒内。<br><b style="color:var(--accent2)">视觉</b> 轻量检测识别展项动作，多模态大模型仅关键节点触发。</p>
+        <p><b style="color:var(--accent2)">对话</b> GPT-4o / 通义 / DeepSeek，建议私有化部署保障延迟与合规。<br><b style="color:var(--accent2)">语音</b> 流式 ASR + 情感 TTS，端到端延迟压到 1.5 秒内。<br><b style="color:var(--accent2)">科普</b> RAG 从知识库取准确内容，杜绝编造。<br><b style="color:var(--accent2)">边界</b> 全程只产出语言，不接任何设备控制接口。</p>
       </div>
     </div>
   </section>
@@ -368,34 +369,55 @@
   <section>
     <div class="shead" style="margin-top:56px">
       <div class="snum">技术灵魂 · 剧情护栏</div>
-      <h2>如何让 Agent 自由生长但不失控</h2>
-      <p>"骨架固定 + 血肉生长"——观众感到每次都不一样，但科普不会错、任务不会卡、时长可控。</p>
+      <h2>如何让 Agent 自由聊但不跑偏</h2>
+      <p>"骨架固定 + 话随人走"——预制剧情按时序照常播，Agent 在这条固定时间线上说话：科普不会讲错、话题不会跑飞、时长可控。</p>
     </div>
     <div class="rail">
       <div class="top">
-        <div class="k">固定骨架（硬约束 · 策划案已定义）</div>
+        <div class="k">固定骨架（预制 · 不受 Agent 影响）</div>
         <ul>
-          <li>起点：ZETA 抛出本舱危机</li>
-          <li>必经知识点：本舱科普硬知识，必须讲到（RAG 知识库保证准确）</li>
-          <li>必做任务：观众必须完成的交互（状态机管理，超时强制推进）</li>
-          <li>终点：获得本舱认证</li>
+          <li>时间线：机器人动作、MR 画面、灯光到点就播，Agent 改不了</li>
+          <li>必讲知识点：本舱科普硬知识必须讲到（RAG 知识库保证准确）</li>
+          <li>时序推进：到点自动进下一段，Agent 只在节点间隙说话，不卡流程</li>
+          <li>节奏兜底：Agent 话说到时间就收，跟上预制时间线</li>
         </ul>
       </div>
       <div class="bot">
-        <div class="k">自由血肉（LLM 按观众实时生成）</div>
+        <div class="k">自由血肉（LLM 按观众实时生成的语言）</div>
         <ul>
-          <li>用观众的话与性格改写 ZETA 台词风格</li>
-          <li>根据观众选择推演"后果剧情"</li>
+          <li>用观众的话与语气改写 ZETA 说话的风格</li>
+          <li>顺着观众的反应，把这段故事往后多讲一点</li>
           <li>追问引导，帮观众自己想通</li>
-          <li>把观众数据织进后续舱的对话</li>
+          <li>把观众前面聊过的话，织进后面舱的对话</li>
         </ul>
       </div>
     </div>
     <div class="grid g4" style="margin-top:18px">
-      <div class="card"><h3 style="font-size:15px">① 系统提示词</h3><p style="font-size:13px">硬约束本舱知识点、任务目标，禁止编造月球常识、禁止卡死观众。</p></div>
-      <div class="card"><h3 style="font-size:15px">② 状态机兜底</h3><p style="font-size:13px">任务进度由确定性状态机管理，LLM 只负责"怎么说"不负责"能不能过"。</p></div>
+      <div class="card"><h3 style="font-size:15px">① 系统提示词</h3><p style="font-size:13px">硬约束本舱知识点、说话边界，禁止编造月球常识、禁止声称能控制设备。</p></div>
+      <div class="card"><h3 style="font-size:15px">② 时序对齐</h3><p style="font-size:13px">Agent 只读预制时间线的当前节点，在间隙里说话，绝不试图推进或改动演出。</p></div>
       <div class="card"><h3 style="font-size:15px">③ RAG 知识库</h3><p style="font-size:13px">科普知识存向量库，讲解从库中取，保证准确。</p></div>
-      <div class="card"><h3 style="font-size:15px">④ 兜底剧本</h3><p style="font-size:13px">网络/模型故障退回预录台词，展览不中断。</p></div>
+      <div class="card"><h3 style="font-size:15px">④ 兜底剧本</h3><p style="font-size:13px">网络/模型故障退回预录台词，展览照常不中断。</p></div>
+    </div>
+  </section>
+
+  <!-- BOUNDARY -->
+  <section>
+    <div class="boundary">
+      <div class="bt">一句话划清边界</div>
+      <div class="brow">
+        <div class="bcol">
+          <b>MR 与机器人</b>
+          全部预制、按时序自动播放。灯光、机器人动作、画面到点就演，跟 Agent 说什么无关。
+        </div>
+        <div class="bcol">
+          <b>ZETA Agent</b>
+          只用语音/文字工作：把预制故事串起来、往后推、追问、答科普。不控制、不驱动任何硬件。
+        </div>
+        <div class="bcol">
+          <b>观众得到的</b>
+          同一场固定的展，因为身边多了个会陪聊、会追问的搭档，每个人聊出来的都不太一样。
+        </div>
+      </div>
     </div>
   </section>
 
@@ -410,12 +432,12 @@
       <div class="step">
         <div class="ph">阶段一 · 2–3 个月</div>
         <h4>原型验证</h4>
-        <p>选生活舱做单机 Demo（Quest 3 + Unity + 云端 LLM），打通"看展项→对话→剧情分支→记忆"最小闭环。目标：证明"每个人体验不同"真的成立且不失控。</p>
+        <p>选生活舱做单机 Demo（Quest 3 + Unity + 云端 LLM），打通"读预制进度→对话→往后延展→追问科普→记忆"最小闭环。目标：证明"同一段固定剧情，每个人聊出来的都不同"且不跑偏。</p>
       </div>
       <div class="step">
         <div class="ph">阶段二 · 3–4 个月</div>
-        <h4>四舱串联 + 实虚联动</h4>
-        <p>四舱剧情骨架全部生产，打通跨舱记忆、中央站联动、档案生成。压延迟（对话 &lt;1.5s）、压并发（数十台同时在线）。</p>
+        <h4>四舱串联 + 跨舱记忆</h4>
+        <p>四舱对话骨架全部生产，与现场预制时序对齐、打通跨舱记忆与收尾回顾。压延迟（对话 &lt;1.5s）、压并发（数十台同时在线）。</p>
       </div>
       <div class="step">
         <div class="ph">阶段三 · 1–2 个月</div>
@@ -434,18 +456,18 @@
     <div class="grid g3">
       <div class="hi">
         <div class="num">01</div>
-        <h3>限制变成叙事优点</h3>
-        <p>一台实体 ZETA 陪不了所有人，于是它"分身"进每个人的眼镜——既是技术必然，又是最动人的科幻设定。</p>
+        <h3>零改造先行</h3>
+        <p>Agent 只做语言层，不碰机器人和 MR 控制——现场所有预制演出照常运作。想加这套 AI 对话，不用动任何硬件与剧情，交付风险极低。</p>
       </div>
       <div class="hi">
         <div class="num">02</div>
         <h3>可控的自由</h3>
-        <p>骨架固定保证科普准确、任务不卡；血肉生长保证每个人的月球一天都不同。让"AI 做展览"从噱头变成可落地产品。</p>
+        <p>预制时间线保证科普准确、节奏不卡；对话随人走保证每个人的体验不同。让"AI 做展览"从噱头，变成真能落地的产品。</p>
       </div>
       <div class="hi">
         <div class="num">03</div>
-        <h3>你看哪讲哪</h3>
-        <p>视觉理解是 MR + Agent 相比手机导览、固定机器人剧场的不可替代性，也是"嵌入 MR"这个决策的真正理由。</p>
+        <h3>会追问的讲解员</h3>
+        <p>相比一台只会播固定台词的导览机，ZETA 会在剧情间隙顺着你的话往后推、追问、补科普——把"看展"变成"有人陪你聊展"。</p>
       </div>
     </div>
   </section>
