@@ -349,9 +349,42 @@
         <p><b style="color:var(--accent2)">对话</b> GPT-4o / 通义 / DeepSeek，建议私有化部署保障延迟与合规。<br><b style="color:var(--accent2)">语音</b> 流式 ASR + 情感 TTS，端到端延迟压到 1.5 秒内。<br><b style="color:var(--accent2)">科普</b> RAG 从知识库取准确内容，杜绝编造。<br><b style="color:var(--accent2)">边界</b> 全程只产出语言，不接任何设备控制接口。</p>
       </div>
     </div>
-  </section>
 
-  <!-- GUARDRAIL -->
+    <!-- COST -->
+    <div class="shead" style="margin-top:52px">
+      <div class="snum">成本预估 · 供参考</div>
+      <h3 style="font-size:22px;margin:6px 0 4px">这套 Agent 大概要多少钱</h3>
+      <p style="font-size:14px">按国内当前行情给个区间。注意：<b style="color:var(--accent2)">这里只算 ZETA 这层对话 Agent</b>——MR 内容、机器人、灯光那些预制演出是策展另一笔预算，不在此列。</p>
+    </div>
+    <div class="grid g3" style="margin-top:16px">
+      <div class="card">
+        <span class="ico">🛠️</span>
+        <h3>一次性开发（软件）</h3>
+        <div style="font-size:26px;font-weight:800;color:var(--accent2);margin:6px 0">¥25–40 万</div>
+        <p style="font-size:13px">四周交付的定制开发：四舱对话骨架 + ZETA 人设、RAG 科普知识库、剧情护栏与时序对齐、MR 端语音闭环（ASR→LLM→TTS）、跨舱记忆、断网兜底、现场联调。<br><span style="color:var(--dim)">团队约 3–4 人 × 1 个月。若砍到单舱 Demo，可压到 ¥8–12 万。</span></p>
+      </div>
+      <div class="card">
+        <span class="ico">🥽</span>
+        <h3>设备（按展期租赁）</h3>
+        <div style="font-size:26px;font-weight:800;color:var(--accent2);margin:6px 0">¥8–20 万</div>
+        <p style="font-size:13px">MR 眼镜 Quest 3 / Pico 4U 租赁约 ¥150–300/台/天。按 20–30 台、18 天展期估算。<br><span style="color:var(--dim)">另需 1 台边缘服务器（本地推理/低延迟）约 ¥3–6 万，可租可买。Vision Pro 旗舰位另计。</span></p>
+      </div>
+      <div class="card">
+        <span class="ico">☁️</span>
+        <h3>运营（模型 / API）</h3>
+        <div style="font-size:26px;font-weight:800;color:var(--accent2);margin:6px 0">¥3–8 万</div>
+        <p style="font-size:13px">对话 + 语音按量计费，单次完整对话约 ¥0.3–0.8。按日均 300–500 人次、全展期估算。<br><span style="color:var(--dim)">用 DeepSeek / 通义等国产模型 + 私有化部署可显著压低；用 GPT-4o 走 API 则偏上限。</span></p>
+      </div>
+    </div>
+    <div class="boundary" style="margin-top:18px">
+      <div class="bt">合计（仅 ZETA 对话 Agent）</div>
+      <div class="brow">
+        <div class="bcol"><b>精简版</b>单舱 Demo + 少量设备，验证概念：约 <b style="color:var(--accent2)">¥15–25 万</b></div>
+        <div class="bcol"><b>完整版</b>四舱串联 + 全展期设备与运营：约 <b style="color:var(--accent2)">¥40–65 万</b></div>
+        <div class="bcol"><b>说明</b>以上为软件+设备+运营的对话层总预算区间，最终随设备台数、模型选型、展期天数浮动，可按实际方案细化报价。</div>
+      </div>
+    </div>
+  </section>
   <section>
     <div class="shead" style="margin-top:56px">
       <div class="snum">技术灵魂 · 剧情护栏</div>
@@ -434,31 +467,6 @@
         <div class="ph">第 4 周 · 上现场</div>
         <h4>连调 + 彩排</h4>
         <p>设备批量到位、现场与预制时序对齐联调、多台并发压测、运营培训 + 全流程彩排。展期开幕即可用。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 06 HIGHLIGHTS -->
-  <section>
-    <div class="shead">
-      <div class="snum">05 — 三个最值得讲的亮点</div>
-      <h2>为什么这个方案能落地</h2>
-    </div>
-    <div class="grid g3">
-      <div class="hi">
-        <div class="num">01</div>
-        <h3>零改造先行</h3>
-        <p>Agent 只做语言层，不碰机器人和 MR 控制——现场所有预制演出照常运作。想加这套 AI 对话，不用动任何硬件与剧情，交付风险极低。</p>
-      </div>
-      <div class="hi">
-        <div class="num">02</div>
-        <h3>可控的自由</h3>
-        <p>预制时间线保证科普准确、节奏不卡；对话随人走保证每个人的体验不同。让"AI 做展览"从噱头，变成真能落地的产品。</p>
-      </div>
-      <div class="hi">
-        <div class="num">03</div>
-        <h3>会追问的讲解员</h3>
-        <p>相比一台只会播固定台词的导览机，ZETA 会在剧情间隙顺着你的话往后推、追问、补科普——把"看展"变成"有人陪你聊展"。</p>
       </div>
     </div>
   </section>
