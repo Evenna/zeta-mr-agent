@@ -43,21 +43,31 @@
   /* HERO */
   .hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;padding:80px 0 60px;position:relative}
   .kicker{font-size:13px;letter-spacing:.35em;color:var(--accent2);text-transform:uppercase;margin-bottom:22px;opacity:.9}
-  .orb{width:130px;height:130px;margin:0 0 36px;border-radius:50%;position:relative;
-    background:conic-gradient(from 0deg, #7de3ff, #5b8cff, #b79bff, #ff8fd4, #7de3ff);
-    filter:saturate(1.5);overflow:hidden;
-    box-shadow:0 0 70px rgba(125,227,255,.4),0 0 30px rgba(183,155,255,.3);
-    animation:spin 14s linear infinite}
-  .orb::before{content:"";position:absolute;inset:0;border-radius:50%;
-    background:radial-gradient(circle at 30% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.35) 22%, transparent 52%);}
-  .orbwrap{position:relative;width:130px;height:130px;margin:0 0 36px}
-  .orbwrap::after{content:"";position:absolute;inset:-6px;border-radius:50%;
-    background:radial-gradient(circle, rgba(125,227,255,.25), transparent 68%);
-    animation:breath 4s ease-in-out infinite;z-index:-1}
-  .orbwrap .orb{margin:0}
-  @keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+  .orbwrap{position:relative;width:150px;height:150px;margin:0 0 40px;animation:float 6s ease-in-out infinite}
+  .orbwrap::after{content:"";position:absolute;inset:-24px;border-radius:50%;pointer-events:none;
+    background:radial-gradient(circle, rgba(125,227,255,.30), rgba(183,155,255,.12) 45%, transparent 70%);
+    animation:breath 5s ease-in-out infinite;z-index:-1}
+  .orb{width:150px;height:150px;border-radius:50%;position:relative;overflow:hidden;
+    background:radial-gradient(circle at 50% 45%, #1a2140 0%, #0a0e1c 78%);
+    box-shadow:inset 0 0 30px rgba(0,0,0,.6),0 0 60px rgba(91,140,255,.35),0 0 120px rgba(183,155,255,.18)}
+  /* liquid color blobs */
+  .orb::before,.orb::after,.orb i,.orb i::before,.orb i::after{content:"";position:absolute;border-radius:50%;filter:blur(14px)}
+  .orb i{position:absolute;inset:0;display:block}
+  .orb::before{width:90px;height:90px;left:8%;top:10%;background:radial-gradient(circle,#7de3ff,transparent 62%);animation:b1 7s ease-in-out infinite}
+  .orb::after{width:100px;height:100px;right:2%;top:22%;background:radial-gradient(circle,#5b8cff,transparent 62%);animation:b2 9s ease-in-out infinite}
+  .orb i::before{width:88px;height:88px;left:20%;bottom:2%;background:radial-gradient(circle,#b79bff,transparent 62%);animation:b3 8s ease-in-out infinite}
+  .orb i::after{width:78px;height:78px;right:14%;bottom:8%;background:radial-gradient(circle,#ff8fd4,transparent 62%);animation:b4 11s ease-in-out infinite}
+  /* glossy top highlight + crisp rim */
+  .orb .gloss{position:absolute;inset:0;border-radius:50%;z-index:3;pointer-events:none;
+    background:radial-gradient(circle at 34% 26%, rgba(255,255,255,.9) 0%, rgba(255,255,255,.15) 14%, transparent 34%);
+    box-shadow:inset 0 0 1px 1px rgba(255,255,255,.18),inset 0 -18px 40px rgba(91,140,255,.25)}
+  @keyframes b1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(26px,30px) scale(1.25)}}
+  @keyframes b2{0%,100%{transform:translate(0,0) scale(1.1)}50%{transform:translate(-30px,26px) scale(.85)}}
+  @keyframes b3{0%,100%{transform:translate(0,0) scale(.95)}50%{transform:translate(24px,-28px) scale(1.2)}}
+  @keyframes b4{0%,100%{transform:translate(0,0) scale(1.15)}50%{transform:translate(-24px,-22px) scale(.9)}}
   @keyframes breath{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.12)}}
   @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  @keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
   h1{font-size:clamp(34px,6vw,60px);line-height:1.12;font-weight:800;letter-spacing:-.01em;margin-bottom:20px}
   h1 .g{background:linear-gradient(120deg,#7de3ff,#5b8cff 60%,#b79bff);-webkit-background-clip:text;background-clip:text;color:transparent}
   .lead{font-size:clamp(16px,2.2vw,20px);color:var(--dim);max-width:660px;margin-bottom:36px}
@@ -174,7 +184,11 @@
 
   /* footer */
   footer{margin:120px 0 60px;padding-top:40px;border-top:1px solid var(--line);color:var(--dim);font-size:13px;text-align:center}
-  footer .orb2{width:44px;height:44px;margin:0 auto 18px;border-radius:50%;background:conic-gradient(from 0deg,#7de3ff,#5b8cff,#b79bff,#ff8fd4,#7de3ff);box-shadow:0 0 24px rgba(91,140,255,.45);animation:spin 8s linear infinite}
+  footer .orb2{width:44px;height:44px;margin:0 auto 18px;border-radius:50%;position:relative;overflow:hidden;
+    background:radial-gradient(circle at 50% 45%, #1a2140 0%, #0a0e1c 80%);
+    box-shadow:0 0 24px rgba(91,140,255,.45),inset 0 0 12px rgba(0,0,0,.6)}
+  footer .orb2::before{content:"";position:absolute;inset:-20%;border-radius:50%;filter:blur(8px);
+    background:conic-gradient(from 0deg,#7de3ff,#5b8cff,#b79bff,#ff8fd4,#7de3ff);animation:spin 8s linear infinite}
 
   @media(max-width:720px){
     .g2,.g3,.g4,.cmp{grid-template-columns:1fr}
@@ -193,7 +207,7 @@
   <!-- HERO -->
   <section class="hero">
     <div class="kicker">未来图景 2026 · 月球基地的一天</div>
-    <div class="orbwrap"><div class="orb"></div></div>
+    <div class="orbwrap"><div class="orb"><i></i><div class="gloss"></div></div></div>
     <h1>ZETA<br><span class="g">你的 MR 轮值搭档</span></h1>
     <p class="lead">一个嵌入 MR 眼镜、以语言陪伴观众的对话式 Agent。它不控制机器人和画面——那些都提前预制好；它只用说话，把预制好的故事往后推、追问、补科普，让每位观众多聊出一点属于自己的体验。</p>
     <div class="meta">
@@ -203,46 +217,10 @@
     </div>
   </section>
 
-  <!-- CORE IDEA -->
-  <section>
-    <p class="pull">MR 里的机器人剧情、动作、灯光，是一部<span class="hl">提前拍好的片子</span>，到点就播。ZETA 不当导演，它是坐在你旁边、<span class="hl">会随你聊天延展讲解的那个"嘴"</span>——同一段故事，它能顺着你的话往后多讲一段、追问你、把科普讲深，让每个人聊出来的都不太一样。</p>
-  </section>
-
-  <!-- 01 WHY -->
+  <!-- 01 CAPABILITY -->
   <section>
     <div class="shead">
-      <div class="snum">01 — 为什么需要这个 Agent</div>
-      <h2>把"看一场展"变成"有人陪你走完这一天"</h2>
-      <p>MR 剧情和机器人动作都是预制好的，对所有人一样。ZETA 加进来，是在这些固定环节的间隙里陪你说话——顺着你的反应把故事往后推、追问、补科普，让固定的展多一层随你生长的对话。</p>
-    </div>
-    <div class="cmp">
-      <div class="col no">
-        <h4>它不是</h4>
-        <ul>
-          <li>控制机器人和画面的"导演"</li>
-          <li>会因为你说话而改变机器人动作</li>
-          <li>只会播放一句固定台词的导览机</li>
-          <li>单纯照本宣科讲科普</li>
-          <li>聊完就断、不接上一段</li>
-        </ul>
-      </div>
-      <div class="col yes">
-        <h4>它是</h4>
-        <ul>
-          <li>预制剧情之间陪你说话的对话搭档</li>
-          <li>顺着你的话把同一段故事往后多讲一段</li>
-          <li>会追问、逼你想一想，再给答案</li>
-          <li>你想深挖时，随时追问得到更多科普</li>
-          <li>记得你前面聊过什么，后面接得上</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 02 CAPABILITY -->
-  <section>
-    <div class="shead">
-      <div class="snum">02 — Agent 的四层能力</div>
+      <div class="snum">01 — Agent 的四层能力</div>
       <h2>ZETA 是一个什么样的 Agent</h2>
       <p>沿用策划案里的基地管理员 ZETA：沉稳、略带幽默、会"犯迷糊"——它向你求助、追问、承认不确定，把"被动听讲"翻转成"你在帮基地解决问题"。它只用语言工作，不碰机器人和画面。</p>
     </div>
@@ -257,7 +235,7 @@
   <!-- 03 FORM -->
   <section>
     <div class="shead">
-      <div class="snum">03 — Agent 怎么"出现"</div>
+      <div class="snum">02 — Agent 怎么"出现"</div>
       <h2>Agent 在 MR 里长什么样</h2>
       <p>这里说的只是 ZETA 的<b style="color:var(--accent2)">视觉外观</b>——它以什么形象陪着你说话。形象也是预制的动画，不代表它在控制现场设备。</p>
     </div>
@@ -324,7 +302,7 @@
   <!-- 04 TECH -->
   <section>
     <div class="shead">
-      <div class="snum">04 — 技术方案</div>
+      <div class="snum">03 — 技术方案</div>
       <h2>Agent 怎么做 · 端-边-云架构</h2>
       <p>MR 设备算力有限，大模型推理放云端 / 场馆边缘服务器。注意：Agent 只做<b style="color:var(--accent2)">听、想、说</b>三件事——它读取"现在播到哪"，输出语音/文字，<b style="color:var(--accent2)">不向机器人和灯光下发任何指令</b>。实体演出由现场时序系统独立跑。</p>
     </div>
@@ -432,7 +410,7 @@
   <!-- 05 ROADMAP -->
   <section>
     <div class="shead">
-      <div class="snum">05 — 落地路径</div>
+      <div class="snum">04 — 落地路径</div>
       <h2>一个月内跑起来</h2>
       <p>因为 Agent 只做语言层、不动任何现场硬件，落地极快。四周排期，直接对着展期倒排。</p>
     </div>
@@ -463,7 +441,7 @@
   <!-- 06 HIGHLIGHTS -->
   <section>
     <div class="shead">
-      <div class="snum">06 — 三个最值得讲的亮点</div>
+      <div class="snum">05 — 三个最值得讲的亮点</div>
       <h2>为什么这个方案能落地</h2>
     </div>
     <div class="grid g3">
