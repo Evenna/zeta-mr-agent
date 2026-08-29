@@ -43,13 +43,21 @@
   /* HERO */
   .hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;padding:80px 0 60px;position:relative}
   .kicker{font-size:13px;letter-spacing:.35em;color:var(--accent2);text-transform:uppercase;margin-bottom:22px;opacity:.9}
-  .orb{width:120px;height:120px;margin:0 0 34px;border-radius:50%;position:relative;
-    background:radial-gradient(circle at 35% 30%, #cfe0ff, #5b8cff 40%, #1a2a66 75%, #0a1030);
-    box-shadow:0 0 60px rgba(91,140,255,.5),inset -8px -8px 30px rgba(0,0,0,.5);
-    animation:float 6s ease-in-out infinite}
-  .orb::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(125,227,255,.3);animation:pulse 3s infinite}
+  .orb{width:130px;height:130px;margin:0 0 36px;border-radius:50%;position:relative;
+    background:conic-gradient(from 0deg, #7de3ff, #5b8cff, #b79bff, #ff8fd4, #7de3ff);
+    filter:saturate(1.5);overflow:hidden;
+    box-shadow:0 0 70px rgba(125,227,255,.4),0 0 30px rgba(183,155,255,.3);
+    animation:spin 14s linear infinite}
+  .orb::before{content:"";position:absolute;inset:0;border-radius:50%;
+    background:radial-gradient(circle at 30% 26%, rgba(255,255,255,.95) 0%, rgba(255,255,255,.35) 22%, transparent 52%);}
+  .orbwrap{position:relative;width:130px;height:130px;margin:0 0 36px}
+  .orbwrap::after{content:"";position:absolute;inset:-6px;border-radius:50%;
+    background:radial-gradient(circle, rgba(125,227,255,.25), transparent 68%);
+    animation:breath 4s ease-in-out infinite;z-index:-1}
+  .orbwrap .orb{margin:0}
+  @keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+  @keyframes breath{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.12)}}
   @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-  @keyframes pulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.35);opacity:0}}
   h1{font-size:clamp(34px,6vw,60px);line-height:1.12;font-weight:800;letter-spacing:-.01em;margin-bottom:20px}
   h1 .g{background:linear-gradient(120deg,#7de3ff,#5b8cff 60%,#b79bff);-webkit-background-clip:text;background-clip:text;color:transparent}
   .lead{font-size:clamp(16px,2.2vw,20px);color:var(--dim);max-width:660px;margin-bottom:36px}
@@ -166,7 +174,7 @@
 
   /* footer */
   footer{margin:120px 0 60px;padding-top:40px;border-top:1px solid var(--line);color:var(--dim);font-size:13px;text-align:center}
-  footer .orb2{width:44px;height:44px;margin:0 auto 18px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#cfe0ff,#5b8cff 45%,#1a2a66);box-shadow:0 0 30px rgba(91,140,255,.4)}
+  footer .orb2{width:44px;height:44px;margin:0 auto 18px;border-radius:50%;background:conic-gradient(from 0deg,#7de3ff,#5b8cff,#b79bff,#ff8fd4,#7de3ff);box-shadow:0 0 24px rgba(91,140,255,.45);animation:spin 8s linear infinite}
 
   @media(max-width:720px){
     .g2,.g3,.g4,.cmp{grid-template-columns:1fr}
@@ -185,7 +193,7 @@
   <!-- HERO -->
   <section class="hero">
     <div class="kicker">未来图景 2026 · 月球基地的一天</div>
-    <div class="orb"></div>
+    <div class="orbwrap"><div class="orb"></div></div>
     <h1>ZETA<br><span class="g">你的 MR 轮值搭档</span></h1>
     <p class="lead">一个嵌入 MR 眼镜、以语言陪伴观众的对话式 Agent。它不控制机器人和画面——那些都提前预制好；它只用说话，把预制好的故事往后推、追问、补科普，让每位观众多聊出一点属于自己的体验。</p>
     <div class="meta">
@@ -425,24 +433,29 @@
   <section>
     <div class="shead">
       <div class="snum">05 — 落地路径</div>
-      <h2>怎么真正做出来</h2>
-      <p>分三阶段，风险可控。总周期约 6–9 个月。</p>
+      <h2>一个月内跑起来</h2>
+      <p>因为 Agent 只做语言层、不动任何现场硬件，落地极快。四周排期，直接对着展期倒排。</p>
     </div>
     <div class="tl">
       <div class="step">
-        <div class="ph">阶段一 · 2–3 个月</div>
-        <h4>原型验证</h4>
-        <p>选生活舱做单机 Demo（Quest 3 + Unity + 云端 LLM），打通"读预制进度→对话→往后延展→追问科普→记忆"最小闭环。目标：证明"同一段固定剧情，每个人聊出来的都不同"且不跑偏。</p>
+        <div class="ph">第 1 周 · 定内容</div>
+        <h4>剧本与知识库</h4>
+        <p>把四舱的预制时序拆出"节点表"（到哪一步 Agent 该说话），写四舱对话骨架 + ZETA 人设提示词，整理科普知识进 RAG 库。这周不碰代码，先把"说什么"定死。</p>
       </div>
       <div class="step">
-        <div class="ph">阶段二 · 3–4 个月</div>
-        <h4>四舱串联 + 跨舱记忆</h4>
-        <p>四舱对话骨架全部生产，与现场预制时序对齐、打通跨舱记忆与收尾回顾。压延迟（对话 &lt;1.5s）、压并发（数十台同时在线）。</p>
+        <div class="ph">第 2 周 · 搭通路</div>
+        <h4>单舱 Demo 跑通</h4>
+        <p>选生活舱：MR 眼镜里出 ZETA 形象 + 语音（ASR→LLM→TTS），读现场时序节点，在间隙开口。打通"听→想→说"闭环，延迟压到 1.5s 内。</p>
       </div>
       <div class="step">
-        <div class="ph">阶段三 · 1–2 个月</div>
-        <h4>量产部署 + 运营</h4>
-        <p>设备批量租赁 / 采购、消杀流程、现场运营培训、兜底剧本压测。呼应 MR 升级包 100 元/人的定价，"个性化档案"是付费转化核心理由。</p>
+        <div class="ph">第 3 周 · 铺四舱</div>
+        <h4>四舱串联 + 兜底</h4>
+        <p>四舱骨架全部接上，打通跨舱记忆与收尾回顾；配好断网/故障退回预录台词的兜底剧本，保证展览永不中断。</p>
+      </div>
+      <div class="step">
+        <div class="ph">第 4 周 · 上现场</div>
+        <h4>连调 + 彩排</h4>
+        <p>设备批量到位、现场与预制时序对齐联调、多台并发压测、运营培训 + 全流程彩排。展期开幕即可用。</p>
       </div>
     </div>
   </section>
