@@ -350,40 +350,6 @@
       </div>
     </div>
 
-    <!-- COST -->
-    <div class="shead" style="margin-top:52px">
-      <div class="snum">成本预估 · 供参考</div>
-      <h3 style="font-size:22px;margin:6px 0 4px">这套 Agent 大概要多少钱</h3>
-      <p style="font-size:14px">主要是我们负责的两块：<b style="color:var(--accent2)">Agent 本身的开发</b> + <b style="color:var(--accent2)">把它嵌进 MR 眼镜的技术集成</b>。再加一笔展期的 <b style="color:var(--accent2)">模型 API 用量</b>——这块其实很便宜，单独列出来免得让人以为省了。MR 内容、机器人、灯光、设备租赁是策展方另一笔预算，不在此列。</p>
-    </div>
-    <div class="grid g3" style="margin-top:16px">
-      <div class="card">
-        <span class="ico">🧠</span>
-        <h3>Agent 开发</h3>
-        <div style="font-size:26px;font-weight:800;color:var(--accent2);margin:6px 0">¥18–30 万</div>
-        <p style="font-size:13px">对话 Agent 的软件本体：四舱对话骨架 + ZETA 人设提示词、RAG 科普知识库、剧情护栏与时序对齐逻辑、跨舱记忆、断网兜底剧本。<br><span style="color:var(--dim)">团队约 2–3 人 × 1 个月。若先做单舱 Demo 验证，可压到 ¥6–10 万。</span></p>
-      </div>
-      <div class="card">
-        <span class="ico">🥽</span>
-        <h3>嵌入 MR 眼镜（技术集成）</h3>
-        <div style="font-size:26px;font-weight:800;color:var(--accent2);margin:6px 0">¥8–15 万</div>
-        <p style="font-size:13px">把 Agent 装进眼镜并跑通闭环：Unity + OpenXR 客户端、端侧语音采集与播放、ASR→LLM→TTS 流式链路（延迟压到 1.5s 内）、ZETA 全息形象渲染、读取现场时序节点、多端适配（Quest 3 / Pico 4U）。<br><span style="color:var(--dim)">按 1–2 款主力机型适配估算，增加机型按比例上浮。</span></p>
-      </div>
-      <div class="card">
-        <span class="ico">☁️</span>
-        <h3>模型 API 用量（展期）</h3>
-        <div style="font-size:26px;font-weight:800;color:var(--accent2);margin:6px 0">¥2千–1万</div>
-        <p style="font-size:13px">整个 18 天展期的对话跑量，其实很便宜。用 DeepSeek 这类国产模型，一次完整对话（ASR + LLM + TTS）约 <b>¥0.02–0.08</b>；按日均 300–500 人次算，<b>一天也就十几到几十块</b>。<br><span style="color:var(--dim)">走 GPT-4o 这类才会翻几倍到上限；语音用 edge-tts 可为 0。用私有化部署则改为一次性算力，不再按量。</span></p>
-      </div>
-    </div>
-    <div class="boundary" style="margin-top:18px">
-      <div class="bt">合计（Agent 开发 + 嵌入眼镜）</div>
-      <div class="brow">
-        <div class="bcol"><b>精简版</b>单舱 Demo + 单机型适配，验证概念：约 <b style="color:var(--accent2)">¥12–20 万</b></div>
-        <div class="bcol"><b>完整版</b>四舱串联 + 多机型适配、全套护栏兜底：约 <b style="color:var(--accent2)">¥26–45 万</b></div>
-        <div class="bcol"><b>说明</b>软件开发与眼镜集成为主，模型 API 展期用量仅几千元、几乎可忽略。不含设备租赁与现场演出。随功能范围与适配机型浮动，可按实际需求细化报价。</div>
-      </div>
-    </div>
   </section>
   <section>
     <div class="shead" style="margin-top:56px">
